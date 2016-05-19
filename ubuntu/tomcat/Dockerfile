@@ -1,9 +1,9 @@
-# »ùÓÚUbuntuµÄtomcat¾µÏñ
+# åŸºäºŽUbuntuçš„tomcaté•œåƒ
 
-# »ùÓÚ¹Ù·½ubuntu¾µÏñ
+# åŸºäºŽå®˜æ–¹ubuntué•œåƒ
 FROM ubuntu
 
-# Î¬»¤Õß
+# ç»´æŠ¤è€…
 MAINTAINER feifeigd "502207456@qq.com"
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
