@@ -21,4 +21,7 @@ RUN apt-get clean
 # 删除系统不再使用的孤立软件
 RUN apt-get autoremove
 
+# 清除临时文件
+RUN rm -rf /tmp/*
+
 ENTRYPOINT java -version
