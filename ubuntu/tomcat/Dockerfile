@@ -24,4 +24,4 @@ RUN apt-get autoremove
 # 清除临时文件
 RUN rm -rf /tmp/*
 
-ENTRYPOINT java -version
+# ENTRYPOINT java -version
