@@ -11,17 +11,20 @@ RUN apt-get update
 
 RUN apt-get -y install curl
 
+# 安装ping指令
+RUN apt-get -yqq inetutils-ping
+
 # 安装JDK
 RUN cd /tmp && curl -L 'http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie; gpw_e24=Dockfile' | tar -xz
 
 
 # 清理所有软件缓存
-RUN apt-get clean
+#RUN apt-get clean
 
 # 删除系统不再使用的孤立软件
-RUN apt-get autoremove
+# RUN apt-get autoremove
 
 # 清除临时文件
-RUN rm -rf /tmp/*
+# RUN rm -rf /tmp/*
 
 # ENTRYPOINT java -version
