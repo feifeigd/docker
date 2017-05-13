@@ -13,3 +13,7 @@ sudo docker logs -f 容器名字或id
 ```shell
 sudo docker port 容器名字或id 容器端口
 ```
+查看容器IP地址
+```shell
+sudo docker inspect --format '{{.NetworkSettings.IPAddress}}' 容器id 
+```
