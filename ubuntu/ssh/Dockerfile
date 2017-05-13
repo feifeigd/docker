@@ -11,7 +11,7 @@ RUN echo "deb http://mirrors.163.com/ubuntu/ precise main universe restricted mu
 	echo "deb http://mirrors.163.com/ubuntu/ precise-backports universe main multiverse restricted" >> /etc/apt/sources.list && \
 	echo "deb-src http://mirrors.163.com/ubuntu/ precise-backports universe main multiverse restricted" >> /etc/apt/sources.list && \
 	echo "deb-src http://mirrors.163.com/ubuntu/ precise-updates universe main multiverse restricted" >> /etc/apt/sources.list && \
-	apt-get update && apt-get install -y openssh-server && mkidr -p /var/run/sshd && mkdir -p /root/.ssh && \
+	apt-get update && apt-get install -y openssh-server && mkdir -p /var/run/sshd && mkdir -p /root/.ssh && \
 	sed -ri 's/session    required     pam_loginuid.so/#session    required     pam_loginid.so/g' /etc/pam.d/sshd
 
 ADD run.sh /root/run.sh && authorize_keys /root/.ssh/authorized_keys
