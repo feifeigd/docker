@@ -9,3 +9,7 @@ sudo docker run -p 5000:5000 -dit registry
 ```shell
 sudo docker logs -f 容器名字或id
 ```
+查看容器映射到宿主的端口
+```shell
+sudo docker port 容器名字或id 容器端口
+```
