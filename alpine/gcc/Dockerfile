@@ -1,5 +1,4 @@
 
 FROM alpine
 
-RUN apk --no-cache add cmake gcc
-
+RUN apk --no-cache add cmake gcc make
