@@ -1,4 +1,4 @@
 
 FROM alpine
 
-RUN apk --no-cache add cmake gcc g++ make
+RUN apk --no-cache add cmake gcc g++ make vim
