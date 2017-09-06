@@ -6,11 +6,11 @@ ARG TOOLCHAIN=stable
 
 RUN apt-get update && apt-get install -y build-essential curl file musl-tools sudo xutils-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
-    && useradd rust --user-group --create-home --shell /bin/bash --groups sudo 
+    && useradd rust --user-group --create-home --shell /bin/bash --groups sudo \
+    && echo "export USER=rust">> /home/rust/.bashrc
 
 # Allow sudo without a password
 ADD sudoers /etc/sudoers.d/nopasswd
-ADD .bashrc /home/rust/.bashrc
 
 # Run all further code as user `rust`, and create our working directories as the appropriate user.
 USER rust
