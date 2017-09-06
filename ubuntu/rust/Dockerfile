@@ -4,8 +4,7 @@ FROM ubuntu
 # The Rust toolchain to user when building our image. Set by `hooks/build`
 ARG TOOLCHAIN=stable
 
-RUN apt-get update && apt-get install -y curl file musl-tools sudo \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+RUN apt-get update && apt-get install -y build-essential curl file musl-tools sudo xutils-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     && useradd rust --user-group --create-home --shell /bin/bash --groups sudo 
 
