@@ -6,11 +6,43 @@ services:
         image: nginx-alpine
         ports:
             - "80:80"
+            - "443:443"
+        volumes:
+            - ./webrtc.html:/usr/share/nginx/html/webrtc.html
+            - ./phpinfo.php:/usr/share/nginx/html/phpinfo.php
+            - ./ngrok.conf:/etc/nginx/conf.d/ngrok.conf
+            - ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./gogs.conf:/etc/nginx/conf.d/gogs.conf
+            #- ./1_d7kj.com_bundle.crt:/usr/local/nginx/conf/server.crt
+            #- ./2_d7kj.com.key:/usr/local/nginx/conf/server.key
+            - ./certificate.crt:/usr/local/nginx/conf/server.crt
+            - ./private.key:/usr/local/nginx/conf/server.key
+            - ./0_57d2gUY9-RANQHF5Gt3La-V7sBba9lMNnQVxOLN-0:/usr/share/nginx/html/.well-known/acme-challenge/0_57d2gUY9-RANQHF5Gt3La-V7sBba9lMNnQVxOLN-0
+            - ./tnM_xNqagNq3fWxCDFmXbvI7nmaIStZqvyZBizelyUE:/usr/share/nginx/html/.well-known/acme-challenge/tnM_xNqagNq3fWxCDFmXbvI7nmaIStZqvyZBizelyUE
+    php:
+        image: php-alpine
+        volumes:
+            - .:/usr/share/nginx/html 
+            -  ./www.conf:/etc/php7/php-fpm.d/www.conf
     shadowsocks:
         image: shadowsocks-alpine
         ports:
             - "8388:8388"
         volumes:
             - /data/docker/shadowsocks/shadowsocks.json:/etc/shadowsocks.json
-
+    ngrok:
+        image: golang
+        command: ngrokd -domain="ngrok.d7kj.com"
+        ports:
+            - "4443:4443"
+        volumes:
+            - ./ngrokd:/usr/bin/ngrokd
+    gogs:
+        image: gogs/gogs
+        ports:
+            - "1022:22"
+        volumes:
+            - /home/luofei/data/gogs:/data 
+volumes:
+    html_root:
              
