@@ -20,10 +20,13 @@ services:
             - ./0_57d2gUY9-RANQHF5Gt3La-V7sBba9lMNnQVxOLN-0:/usr/share/nginx/html/.well-known/acme-challenge/0_57d2gUY9-RANQHF5Gt3La-V7sBba9lMNnQVxOLN-0
             - ./tnM_xNqagNq3fWxCDFmXbvI7nmaIStZqvyZBizelyUE:/usr/share/nginx/html/.well-known/acme-challenge/tnM_xNqagNq3fWxCDFmXbvI7nmaIStZqvyZBizelyUE
     php:
-        image: php-alpine
+        build: ../alpine/php
         volumes:
             - .:/usr/share/nginx/html 
             -  ./www.conf:/etc/php7/php-fpm.d/www.conf
+            - ./xdebug.ini:/etc/php7/conf.d/xdebug.ini
+        ports:
+            - "9000:9000"
     shadowsocks:
         image: shadowsocks-alpine
         ports:
