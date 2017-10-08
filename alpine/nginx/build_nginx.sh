@@ -12,6 +12,9 @@ apk --no-cache add --virtual .build-deps \
 	pcre-dev \
 	zlib-dev
 CONFIG="\
+	--build="$USER build at `date +%Y%m%d`" \
+	--with-stream \
+	--with-threads \
 	"
 cd /tmp
 curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tar.gz
@@ -30,16 +33,16 @@ done;
 test -z "$found" && echo >&2 "error: failed to fetch GPG key $GPG_KEYS" && exit 1
 echo verify ngingx.tar.gz...
 gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz
-rm -rf "$GNUPGHOME"/* nginx.tar.gz.asc
 mkdir -p src
 tar -zxC src -f nginx.tar.gz
-rm nginx.tar.gz
 cd src/nginx-$NGINX_VERSION
 ./configure $CONFIG # --with-debug  
 make -j`getconf _NPROCESSORS_ONLN` && make install
 
-runDeps=`scanelf --needed --nobanner objs/nginx|awk '{gsub(/,/, "\nso:",$2);print "so:"$2}'|xargs apk info --installed|sort -u`
+binary="/usr/local/nginx/sbin/nginx"
+strip $binary
+runDeps=`scanelf --needed --nobanner $binary |awk '{gsub(/,/, "\nso:",$2);print "so:"$2}'|xargs apk info --installed|sort -u`
 echo "install runDeps=$runDeps"
+apk del .build-deps
 apk --no-cache add $runDeps
-# apk del .buiild-deps
-# rm -rf /tmp/*
+rm -rf /tmp/*

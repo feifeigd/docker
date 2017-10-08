@@ -13,5 +13,7 @@ RUN /tmp/build_nginx.sh
 COPY index.html /usr/share/nginx/html/
 COPY default.conf /etc/nginx/conf.d/
 
+EXPOSE 80
+STOPSIGNAL SIGTERM
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
 
