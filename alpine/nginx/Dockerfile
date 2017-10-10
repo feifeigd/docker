@@ -10,7 +10,7 @@ VOLUME /run/nginx/
 COPY build_nginx.sh /tmp/
 RUN /tmp/build_nginx.sh
 
-COPY index.html /usr/share/nginx/html/
+COPY index.html /usr/local/nginx/html/
 COPY default.conf /etc/nginx/conf.d/
 
 EXPOSE 80
