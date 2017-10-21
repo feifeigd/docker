@@ -1,0 +1,30 @@
+
+#./configure --add-module=this path
+
+# 模块的名字,在configure时显示用
+ngx_addon_name=ndg_test_module
+
+if test -n "$ngx_module_link"; then
+	# 模块的类型，通常是HTTP,HTTP_FILTER 
+	ngx_module_type=HTTP
+	# 模块在C/C++代码里面的名字，编译链接时用，运行有多个不同的模块
+	ngx_module_name=ndg_test_module
+	# 模块的源码列表，用逗号分隔
+	ngx_module_srcs="$ngx_addon_dir/ModNdgTest.cpp"
+	
+	ngx_module_incs="$ngx_addon_dir/../../ngxpp"
+
+	# 重要步骤，调用Nginx提供的脚本处理上述变量
+	. auto/module
+else
+	HTTP_MODULES="$HTTP_MODULES ndg_test_module"
+	HTTP_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ModNdgTest.cpp"
+fi
+
+
+
+###########
+ndg_addon_mod=ndg_test_module
+ndg_addon_src=ModNdgTest.cpp
+ndg_addon_incs="$ngx_addon_dir/../../ngxpp"
+
