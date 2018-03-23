@@ -6,7 +6,7 @@ FROM ubuntu
 # 维护者
 MAINTAINER feifeigd "502207456@qq.com"
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list && apt-get update
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list.d/docker.list && apt-get update
 
 # 安装curl、ping指令
 RUN apt-get -y install iputils-ping curl
