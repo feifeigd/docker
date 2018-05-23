@@ -12,9 +12,10 @@ MAINTAINER feifeigd <502207456@qq.com>
 RUN yum -y update && yum -y install openssh-server passwd sudo wget && yum clean all \
     && echo "luofei ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && mkdir /var/run/sshd \
     && ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' \
+    && ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N '' \
     && useradd luofei \
     && mkdir -p /home/luofei/.ssh && wget -O /home/luofei/.ssh/authorized_keys https://raw.githubusercontent.com/feifeigd/docker/master/ssh/authorized_keys 
 
-ENTRYPOINT /usr/sbin/sshd -D
+CMD /usr/sbin/sshd -D
 
 
