@@ -8,7 +8,7 @@ VOLUME /run/nginx/
 # 配置路径 /etc/nginx/
 
 COPY build_nginx.sh /tmp/
-RUN /tmp/build_nginx.sh
+RUN chmod +x /tmp/build_nginx.sh && /tmp/build_nginx.sh
 
 COPY index.html /usr/local/nginx/html/
 COPY default.conf /etc/nginx/conf.d/
