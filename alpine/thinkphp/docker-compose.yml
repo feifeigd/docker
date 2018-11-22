@@ -1,0 +1,22 @@
+
+version: '3'
+
+services:
+  helloworld:
+    build: .
+    depends_on:
+      - mysql
+    volumes:
+      - ./tp5:/tp5
+    ports:
+      - "80:80"
+
+  mysql: 
+    image: mysql:5.7.22
+    ports:
+      - '127.0.0.1:3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=Zws07533601711swZROOT
+    # volumes:
+    #  - /www/mysql:/var/lib/mysql
+
