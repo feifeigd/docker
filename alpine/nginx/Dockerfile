@@ -1,5 +1,5 @@
 
-FROM alpine
+FROM alpine-base
 
 # RUN apk --no-cache add nginx
 

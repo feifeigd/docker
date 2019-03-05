@@ -1,3 +1,8 @@
+构建docker镜像
+```shell
+docker build -t thinkphp .
+```
+
 下载ThinkPHP源码
 
 1. 克隆下载应用项目仓库

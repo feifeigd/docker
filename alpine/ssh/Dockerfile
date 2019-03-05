@@ -12,4 +12,3 @@ ADD run.sh /root/run.sh
 RUN chmod u+x /root/run.sh
 EXPOSE 22
 CMD ["/root/run.sh"]
-

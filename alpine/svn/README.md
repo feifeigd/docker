@@ -1,6 +1,6 @@
 构建镜像
 ```
-sudo docker image -t svn-alpine .
+sudo docker image build -t svn-alpine .
 ```
 运行一个容器
 ```

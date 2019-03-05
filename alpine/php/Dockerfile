@@ -1,8 +1,8 @@
 
 
-FROM alpine:3.8
+FROM alpine-base
 
-RUN apk --update add nginx php5-fpm && \
+RUN apk --no-cache add nginx php7-fpm && \
     mkdir -p /run/nginx
 
 ADD www /www
