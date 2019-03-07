@@ -9,7 +9,7 @@ RUN apk --no-cache add nginx php7-fpm && \
 
 ADD nginx.conf /etc/nginx/
 # 15行 注释 警告
-ADD php-fpm.conf /etc/php5/php-fpm.conf
+ADD php-fpm.conf /etc/php7/php-fpm.conf
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
