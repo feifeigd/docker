@@ -1,5 +1,5 @@
 
 
 ```shell
-sudo docker image build -t alpine-base .
+sudo docker image build -t alpine-base:3.10 .
 ```
