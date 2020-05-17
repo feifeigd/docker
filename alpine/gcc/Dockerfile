@@ -2,8 +2,13 @@
 FROM ssh-alpine
 
 # 使用国内的源,安装必要的包
-RUN apk --no-cache add ctags curl curl-dev gcc gdb git gnupg g++ make openssl openssl-dev openssh-client pcre-dev python3 socat subversion vim \
-  && cd /tmp \
+RUN apk --no-cache add alpine-sdk ctags curl-dev gdb  gnupg openssl-dev openssh-client pcre2-dev python3 socat subversion  \	
+	&& mkdir -p /var/cache/distfiles \
+	&& chmod a+w /var/cache/distfiles \
+	&& chgrp abuild /var/cache/distfiles \
+	&& chmod g+w /var/cache/distfiles
+
+RUN cd /tmp \
   && git clone https://github.com/sysprogs/CMake.git \
   && cd CMake && mkdir build && cd build && ../configure && make && make install \
   && rm -rf ./* 
