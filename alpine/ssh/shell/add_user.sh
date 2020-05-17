@@ -5,11 +5,6 @@ username='feifeigd'
 password=`openssl rand -base64 8`
 echo "new $username $password"
 
-
-adduser_spawn 'feifeigd' $password
-git config --global user.name $username
-git config --global user.email "feifeigd@21cn.com"
-
 function remote_spawn()
 {
 	/usr/bin/expect << EOF
@@ -55,3 +50,7 @@ function adduser_spawn()
 		}
 EOF
 }
+
+adduser_spawn 'feifeigd' $password
+git config --global user.name $username
+git config --global user.email "feifeigd@21cn.com"

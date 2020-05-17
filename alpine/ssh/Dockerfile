@@ -1,7 +1,7 @@
 
 FROM alpine-base
 
-RUN apk add --no-cache openssh-server \
+RUN apk add --no-cache git openssh-server openssl \
     && mkdir -p /root/.ssh && wget -O /root/.ssh/authorized_keys https://raw.githubusercontent.com/feifeigd/docker/master/ssh/authorized_keys \
     && ssh-keygen -P "" -t rsa -f /etc/ssh/ssh_host_rsa_key \
     && ssh-keygen -P "" -t dsa -f /etc/ssh/ssh_host_dsa_key \
