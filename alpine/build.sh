@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # 有些有依赖关系的，不能按照字母顺序构建
-docker image build -t alpine-base        base
+docker image build -t alpine-base:3.12   base
 docker image build -t ssh-alpine         ssh  
 docker image build -t gcc-alpine         gcc
 docker image build -t clang-alpine       clang

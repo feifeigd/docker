@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NGINX_VERSION=1.13.5
+NGINX_VERSION=1.18.0
 GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8
 
 apk --no-cache add --virtual .build-deps \
@@ -36,7 +36,7 @@ gpg --batch --verify nginx.tar.gz.asc nginx.tar.gz
 mkdir -p src
 tar -zxC src -f nginx.tar.gz
 cd src/nginx-$NGINX_VERSION
-./configure $CONFIG # --with-debug  
+./configure $CONFIG # --with-debug
 make -j`getconf _NPROCESSORS_ONLN` && make install
 
 binary="/usr/local/nginx/sbin/nginx"

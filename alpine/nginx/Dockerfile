@@ -1,7 +1,6 @@
+FROM alpine-base:3.12
 
-FROM alpine-base
-
-# RUN apk --no-cache add nginx
+#RUN apk --no-cache add nginx
 
 # /run/nginx/nginx.pid
 VOLUME /run/nginx/
