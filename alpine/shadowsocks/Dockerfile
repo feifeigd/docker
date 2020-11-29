@@ -1,7 +1,7 @@
 
-FROM alpine-base
+FROM alpine
 
-RUN apk --no-cache add py2-pip \
+RUN apk --no-cache add py-pip \
    && pip install shadowsocks
 
 COPY shadowsocks.json /etc/shadowsocks.json
