@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NGINX_VERSION=1.18.0
+NGINX_VERSION=1.20.1
 GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8
 
 apk --no-cache add --virtual .build-deps \
