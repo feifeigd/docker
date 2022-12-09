@@ -1,0 +1,25 @@
+
+version: '2'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    container_name: gitlab
+    restart: always
+    hostname: localhost
+    environment:
+      TZ: Asia/Shanghai
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url = 'http://localhost:80'
+        gitlab_rails['gitlab_shell_ssh_port'] = 10080
+        gitlab_rails['time_zone'] = 'Asia/Shanghai'
+      
+    ports: 
+      - "80:80"
+      - "10080:22"
+      - "443:443"
+    volumes:
+      # 初始安装的root密码在 initial_root_password
+      - /Users/feifeigd/data/gitlab/config:/etc/gitlab
+      - /Users/feifeigd/data/gitlab/logs:/var/log/gitlab
+      - /Users/feifeigd/data/gitlab/data:/var/opt/gitlab
